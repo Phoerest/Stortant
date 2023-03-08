@@ -1,0 +1,9 @@
+<script defer>
+const itemsMenu = document.getElementById('itemsMenu')
+items.forEach((item, index) => {
+	const option = document.createElement('option')
+	option.setAttribute('value', index)
+	option.innerText = item.name
+	itemsMenu.appendChild(option)
+})
+</script>

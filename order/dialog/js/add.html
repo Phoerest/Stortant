@@ -1,0 +1,47 @@
+<script defer>
+function addItem(index) {
+	const inputExists = document.querySelector(`[data-item-id="${index}"]`)
+	if (inputExists) return
+
+	const item = items[index]
+	const container = document.createElement('div')
+	const label = document.createElement('label')
+	const button = document.createElement('button')
+	const input = document.createElement('input')
+	const price = document.createElement('p')
+
+	label.setAttribute('for', `orderAmount${index}`)
+	input.setAttribute('type', 'number')
+	input.setAttribute('min', '0')
+	input.setAttribute('value', '0')
+	input.setAttribute('max', item.quantity)
+	input.setAttribute('id', `orderAmount${index}`)
+	input.setAttribute('data-item-id', index)
+
+	input.onchange = () => {
+		const quantity = parseInt(input.value)
+		const totalPrice = (item.price + item.profit) * quantity
+		price.innerText = `Price: ${totalPrice.toFixed(2)} ₺`
+		updatePrice()
+	}
+
+	button.style.backgroundColor = '#d93025'
+	button.style.outlineColor = '#d93025'
+
+	button.innerText = 'Delete'
+	label.innerText = item.name
+	price.innerText = 'Price: 0 ₺'
+
+	const itemsContainer = document.getElementById('itemsContainer')
+	itemsContainer.appendChild(container)
+	container.appendChild(label)
+	container.appendChild(button)
+	container.appendChild(input)
+	container.appendChild(price)
+
+	button.onclick = () => {
+		itemsContainer.removeChild(container)
+		updatePrice()
+	}
+}
+</script>

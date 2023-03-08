@@ -1,0 +1,14 @@
+<script defer>
+function updatePrice() {
+	const inputs = document.querySelectorAll('[data-item-id]')
+	let finalPrice = 0
+	inputs.forEach((input) => {
+		const index = input.getAttribute('data-item-id')
+		const value = parseInt(input.value)
+		const price = items[index].price
+		const profit = items[index].profit
+		finalPrice += (price + profit) * value
+	})
+	document.getElementById('price').innerText = ` ${finalPrice.toFixed(2)} ₺`
+}
+</script>

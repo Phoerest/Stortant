@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<base target="_top">
+		<?!= includeHTML('order/dialog/css/mix'); ?>
+		<?!= includeHTML('order/dialog/css/textarea'); ?>
+		<?!= includeHTML('order/dialog/css/button'); ?>
+		<?!= includeHTML('order/dialog/css/menu'); ?>
+		<?!= includeHTML('order/dialog/css/label'); ?>
+	</head>
+	<body>
+		<div id="itemsContainer"></div>
+		<hr>
+		<select onchange="selectItem(this)" id="itemsMenu">
+			<option value="default" selected="selected">Add items</option>
+		</select>
+		<hr>
+		<textarea id="orderNotes" placeholder="Enter order notes"></textarea>
+		<p id="price"> 0 ₺ </p>
+		<div class="buttonsContainer">
+			<button style="background-color: #188038; outline-color: #188038" onclick="submitOrder()">Confirm</button>
+			<button style="background-color: #d93025; outline-color: #d93025" onclick="google.script.host.close()">Cancel</button>
+		</div>
+		<script defer>
+			const items = JSON.parse(<?= items ?>)
+		</script>
+		<?!= includeHTML('order/dialog/js/menu'); ?>
+		<?!= includeHTML('order/dialog/js/add'); ?>
+		<?!= includeHTML('order/dialog/js/select'); ?>
+		<?!= includeHTML('order/dialog/js/submit'); ?>
+		<?!= includeHTML('order/dialog/js/update'); ?>
+	</body>
+</html>
