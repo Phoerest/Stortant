@@ -6,11 +6,14 @@
 		<?!= includeHTML('order/dialog/css/textarea'); ?>
 		<?!= includeHTML('order/dialog/css/button'); ?>
 		<?!= includeHTML('order/dialog/css/menu'); ?>
+		<?!= includeHTML('order/dialog/css/table'); ?>
 		<?!= includeHTML('order/dialog/css/label'); ?>
 	</head>
 	<body>
 		<div id="itemsContainer"></div>
 		<hr>
+		<input type="text" placeholder="Search" oninput="createSelect(this.value)" />
+		<table id="searchTable"></table>
 		<select onchange="selectItem(this)" id="itemsMenu">
 			<option value="default" selected="selected">Add items</option>
 		</select>

@@ -19,10 +19,11 @@ function submitOrder() {
 	inputs.forEach((input) => {
 		const index = input.getAttribute('data-item-id')
 		const item = items[index]
+    item.index = index
 		item.quantity = parseInt(input.value)
 		finalPrice += (item.price * item.quantity)
 		finalProfit += (item.profit * item.quantity)
-		details[index] = item
+		details.push(item)
 	})
 	google.script.run
 		.withSuccessHandler(() => google.script.host.close())

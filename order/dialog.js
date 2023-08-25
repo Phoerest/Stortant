@@ -5,10 +5,12 @@ function openOrderDialog() {
 
 	const orderDialogHTML = HtmlService.createTemplateFromFile('order/dialog/page')
 
-	orderDialogHTML.items = JSON.stringify( values.map((value) => ({
-		name: value[0], price: value[1],
-		profit: value[2], quantity: value[3]
-	})) )
+  const items = values.map((value) => ({
+      name: value[0], price: value[1],
+      profit: value[2], quantity: value[3]
+    }))
+  items.unshift('', '')
+	orderDialogHTML.items = JSON.stringify(items)
 
 	const finalDialogHTML = orderDialogHTML.evaluate()
 
